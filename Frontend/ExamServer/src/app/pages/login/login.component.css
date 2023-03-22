@@ -1,0 +1,21 @@
+.full-width{
+
+    width: 100%;
+}
+
+.shadow-card{
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0 5px 15px #1e211e);
+}
+
+
+input.ng-touched.ng-invalid{
+
+    
+    border-width: 2px;
+ 
+
+}
+
+

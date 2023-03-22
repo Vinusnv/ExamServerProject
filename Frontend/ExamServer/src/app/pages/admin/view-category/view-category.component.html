@@ -1,0 +1,57 @@
+<!-- <mat-card >
+   <div><h1>Categories</h1></div>
+    <mat-card-content *ngFor="let content of categories">
+        <mat-icon>folder</mat-icon>
+        <mat-card-title>{{ content.title }}</mat-card-title>
+        <mat-card-subtitle>  {{ content.description }}</mat-card-subtitle>
+    
+    </mat-card-content>
+  </mat-card>
+   -->
+
+
+  <!-- <mat-card *ngFor="let content of categories">
+    <div><h1>Categories</h1></div>
+     <mat-card-content>
+         <mat-icon>folder</mat-icon>
+         <mat-card-title>{{ content.title }}</mat-card-title>
+         <mat-card-subtitle>  {{ content.description }}</mat-card-subtitle>
+     
+     </mat-card-content>
+   </mat-card> -->
+   
+<!-- <mat-card>
+  <div class="ml10"><h1> All Categories</h1></div>
+   <mat-card-content *ngFor="let category of categories";let i =index>
+    <div style="display: flex; align-items: center;">
+      <mat-icon style="margin-right: 10px;">category</mat-icon>
+      <div style="width: 100%;">
+        <mat-card-title>{{ category.title}}</mat-card-title>
+        <mat-card-subtitle>{{ category.description }}</mat-card-subtitle>
+          <button mat-button mat-raised-button style="width: 100px;" class="mb10" color="accent" (click)="delete(i)" >Delete</button>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+  </mat-card-content>
+  <div class="container text-center mt20 mb20">
+    <button mat-raised-button color="accent" routerLink="/admin/addcategory">Add New Category</button>
+  </div>
+  
+</mat-card> -->
+  
+<mat-card>
+<mat-card-content *ngFor="let category of categories; let i = index">
+  <div style="display: flex; align-items: center;">
+    <mat-icon style="margin-right: 10px;">category</mat-icon>
+    <div style="width: 100%;">
+      <mat-card-title>{{ category.title }}</mat-card-title>
+      <mat-card-subtitle>{{ category.description }}</mat-card-subtitle>
+      <button mat-button mat-raised-button style="width: 100px;" class="mb10" color="accent" (click)="deleteCategory(category.title)">Delete</button>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+</mat-card-content>
+<div class="container text-center mt20 mb20">
+  <button mat-raised-button color="accent" routerLink="/admin/addcategory">Add New Category</button>
+</div>
+</mat-card>

@@ -1,0 +1,11 @@
+.example-header-image {
+    background-image: url('../../../../assets/score.png');
+    background-size: cover;
+  }
+
+
+  .check {
+    background-image: url('../../../../assets/check.png');
+    background-size: cover;
+    
+  }

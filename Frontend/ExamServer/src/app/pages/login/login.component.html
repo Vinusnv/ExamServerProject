@@ -1,0 +1,46 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row" style="margin-top: 10px">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center" style="margin-bottom: 20px">
+                    <img src="../../../assets/nbenewlogo.png" style="width: 120px" alt="" srcset="" />
+                </div>
+                <mat-card class="full-width shadow-card" style="margin-bottom: 20px">
+                    <mat-card-content>
+                        <h1 class="text-center">Register Here</h1>
+                        <form [formGroup]="loginForm" (ngSubmit)="login()">
+                            <!-- USER NAME -->
+                       
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>UserName</mat-label>
+                                <input matInput placeholder="Placeholder" formControlName="username" />
+                            </mat-form-field>
+                            <!-- FIRSTNAME -->
+                            <!-- PASSWORD -->
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>Password</mat-label>
+                                <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password" />
+                                <mat-icon-button matSuffix (click)="showPassword = !showPassword">
+                                    <mat-icon>{{ showPassword ? "visibility" : "visibility_off" }}</mat-icon>
+                                </mat-icon-button>
+                            </mat-form-field>
+
+                            <!-- PHONE -->
+                      
+                            <div class="container text-center form-group">
+                                <button mat-raised-button color="primary" type="submit" class="mr20">
+                                    Login
+                                </button>
+                                <button mat-raised-button color="accent" type="button" (click)="resetForm()">
+                                    ClearForm
+                                </button>&nbsp;
+                                <span>Not Rgisterd click to Register <a routerLink="/signup">here</a> </span>
+                                
+                            </div>
+                        </form>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
