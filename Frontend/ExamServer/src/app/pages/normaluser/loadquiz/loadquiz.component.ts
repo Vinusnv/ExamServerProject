@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class LoadquizComponent implements OnInit{
   cId;
   quizes:any=[];
-  category:any;
+  category:any='';
   constructor(
     private aroute:ActivatedRoute,
     private quizservice:QuizService,
@@ -39,7 +39,7 @@ export class LoadquizComponent implements OnInit{
 
       if(this.cId==0)
       {
-        this.quizservice.fetchquizes().subscribe((data)=>{
+        this.quizservice.activequizes().subscribe((data)=>{
           this.quizes=data
            
         },(error)=>{
@@ -50,7 +50,9 @@ export class LoadquizComponent implements OnInit{
       else{
            console.log("cid before",this.cId)
 
-        this.quizservice.fetchquizesofcategory(this.cId).subscribe((data)=>{
+        this.quizservice.activequizesofcategory(this.cId).subscribe((data)=>{
+
+          console.log("checking only active  quizes of category ",data)
           this.quizes=data
             if(this.quizes.length!=0)
             {

@@ -75,5 +75,24 @@ public class QuizController {
 		this.service.deleteQuiz(qid);
 
 	}
+	
+	//finding active quizes
+	@GetMapping("/active")
+	public List<Quiz> fetchactivequizes()
+	{   
+		
+		return this.service.getActivequizes();
+	}
+	
+	//finding active quizes of category
+		@GetMapping("/activequizcategory")
+		public List<Quiz> fetchactivequizesofCategory(@RequestParam ("cid") Long cid)
+		{   
+			 Category category=new Category();
+			 category.setCId(cid);
+			 
+			return this.service.getActiveQuizesofcategory(category);
+		}
+
 
 }

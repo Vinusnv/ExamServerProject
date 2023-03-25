@@ -55,11 +55,27 @@ public class QuizServiceImpl implements QuizService {
 		this.repo.deleteById(qid);
 
 	}
-
+  //Fetching Quizes of category
 	@Override
 	public List<Quiz> getqizesofcategory(Category category) {
 		
 		return this.repo.findBycategory(category);
+	}
+
+	
+	//fetching  only active quizes
+	@Override
+	public List<Quiz> getActivequizes()  {
+		
+		return this.repo.findByActive(true);
+	}
+
+	
+	//fetching only active quizes of category
+	@Override
+	public List<Quiz> getActiveQuizesofcategory(Category category) {
+		
+		return this.repo.findByCategoryAndActive(category, true);
 	}
 
 }
