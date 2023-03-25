@@ -1,0 +1,48 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>
+                           <h1> <strong>Read the Instruction of the page carefully</strong></h1>
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            One Step More To Go..
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <h3> {{quiz.title}}</h3>
+                        <p>{{quiz.description}}</p>
+                        <hr>
+
+                        <h1>Important Instructions</h1>
+                        <ul>
+                            <li>This Quiz is only for practice purpose</li>
+                            <li>Total number of Questions <b>{{quiz.numberofQuestions}}</b> </li>
+                            <li>Each questions Carries marks of <b>{{marksofeachquestion}}</b></li>
+                            <li>All Questions are <b>MCQ</b> type Only</li>
+                            <li>No <b>Negetive markings</b> for this Quiz</li>
+                            <li>Time limit for this Quiz will be  <b>{{time}} Minutes</b></li>
+                            <li>You have to submit your Quiz with in time limt</li>
+                            <li>You can attempt this quiz any number of time</li> 
+                        </ul>
+                                 <hr>
+                        <br>
+                        <h1>Attempting Quiz</h1> 
+                        <ul>
+                          <li>Click <b>Start Quiz</b> Button to Start your Test</li>
+                          <li>The time will start the moment you click the start test button</li>
+                          <li>You an not resume the quiz ,if interrupted due to any reason</li>
+                          <li>Scroll Down to move next question  </li>
+                          <li>Report of the quiz is automatically generated in the form of PDF</li>
+                        </ul>
+                    </mat-card-content>
+                    <div class="container text-center mb10" >
+                            <button mat-raised-button (click)="startquiz()" color="primary" >Start Quiz</button>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

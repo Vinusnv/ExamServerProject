@@ -43,6 +43,8 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
 import { UserSidebarComponent } from './pages/normaluser/user-sidebar/user-sidebar.component';
 import { UserDashboardComponent } from './pages/normaluser/user-dashboard/user-dashboard.component';
 import { LoadquizComponent } from './pages/normaluser/loadquiz/loadquiz.component';
+import { UserInstructionsComponent } from './pages/normaluser/user-instructions/user-instructions.component';
+import { StartQuizComponent } from './pages/normaluser/start-quiz/start-quiz.component';
 
 
 
@@ -77,7 +79,9 @@ import { LoadquizComponent } from './pages/normaluser/loadquiz/loadquiz.componen
     AddQuestionComponent,
     UserSidebarComponent,
     UserDashboardComponent,
-    LoadquizComponent
+    LoadquizComponent,
+    UserInstructionsComponent,
+    StartQuizComponent
   
  
    

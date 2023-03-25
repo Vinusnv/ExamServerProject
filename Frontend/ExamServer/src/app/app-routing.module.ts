@@ -1,3 +1,5 @@
+import { StartQuizComponent } from './pages/normaluser/start-quiz/start-quiz.component';
+import { UserInstructionsComponent } from './pages/normaluser/user-instructions/user-instructions.component';
 import { LoadquizComponent } from './pages/normaluser/loadquiz/loadquiz.component';
 import { UserDashboardComponent } from './pages/normaluser/user-dashboard/user-dashboard.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
@@ -26,6 +28,9 @@ import { NormaldashboardComponent } from './pages/normaldashboard/normaldashboar
 
 const routes: Routes = [
 
+
+  {path:"start/:qid",component:StartQuizComponent,canActivate:[NormalGuard] },
+
   { path: "signup", component: SignupComponent },
   { path: "sidemenu", component: SidemenubarComponent, canActivate: [AdminGuard] },
   { path: "login", component: LoginComponent },
@@ -48,7 +53,9 @@ const routes: Routes = [
   },
   { path: "normal", component: UserDashboardComponent, canActivate: [NormalGuard],children:[
 
-    {path:":cId",component:LoadquizComponent }
+    {path:":cId",component:LoadquizComponent },
+    {path:"instruction/:qid",component:UserInstructionsComponent },
+   
   ] },
   
  
