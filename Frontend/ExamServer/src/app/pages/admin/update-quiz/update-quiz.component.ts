@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class UpdateQuizComponent implements OnInit {
 
   qId = 0;
-  quizData;
+  quizData=null
   categories: any = [
 
   ]

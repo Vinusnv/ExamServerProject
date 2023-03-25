@@ -1,3 +1,5 @@
+import { LoadquizComponent } from './pages/normaluser/loadquiz/loadquiz.component';
+import { UserDashboardComponent } from './pages/normaluser/user-dashboard/user-dashboard.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { ViewquizQuestionComponent } from './pages/admin/viewquiz-question/viewquiz-question.component';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
@@ -11,7 +13,6 @@ import { AdminGuard } from './Service/admin.guard';
 import { SidemenubarComponent } from './pages/sidemenubar/sidemenubar.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ErrorpageComponent } from './pages/errorpage/errorpage.component';
@@ -45,9 +46,14 @@ const routes: Routes = [
 
     ], canActivate: [AdminGuard]
   },
-  { path: "normal", component: NormaldashboardComponent, canActivate: [NormalGuard] },
-  { path: "", redirectTo: "signup", pathMatch: 'full' },
-  { path: "**", component: ErrorpageComponent },
+  { path: "normal", component: UserDashboardComponent, canActivate: [NormalGuard],children:[
+
+    {path:":qid",component:LoadquizComponent }
+  ] },
+  
+ 
+  { path: "**", component: LoginComponent },
+  { path: ":catId", component: LoginComponent },
 
 
 ];

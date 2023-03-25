@@ -12,23 +12,26 @@
                   <div class="container-fluid">
                  <div class="row mt10">
                     <div class="col-md-6">
-                        <p><b>1)</b>{{ q.option1}}</p>
+                        <b>1)</b><span class="ml10 ">{{q.option1}}</span>  
                     </div>
                     <div class="col-md-6">
-                        <p><b>2)</b>{{ q.option2}}</p>
+                        <b>2)</b><span class="ml10 ">{{q.option2}}</span>
                     </div>
                     <div class="col-md-6">
-                        <p><b>3)</b>{{q.option3}}</p>
+                        <b>3)</b><span class="ml10 ">{{q.option3}}</span>
                     </div>
                     <div class="col-md-6">
-                        <p><b>4)</b>{{ q.option4}}</p>
+                        <b>4)</b><span class="ml10 ">{{q.option4}}</span>
                     </div>
                  </div>
                  <mat-divider></mat-divider>
                  <p class="mt20"><b>Correct Answer : </b>{{q.answer}}</p>
                   </div>
                 </mat-card-content>
-               
+             <mat-card-actions>
+               <button mat-raised-button color="primary" >Update</button>&nbsp;
+               <button mat-raised-button color="accent" (click)="deletequestion(q.quesId)" >Delete</button>    
+             </mat-card-actions>
             </mat-card>
         </div>
     </div>

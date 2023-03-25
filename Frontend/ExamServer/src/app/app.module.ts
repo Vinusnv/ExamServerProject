@@ -27,7 +27,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SidebarComponent } from './pages/sidebar/sidebar.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { SidemenubarComponent } from './pages/sidemenubar/sidemenubar.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -41,6 +40,10 @@ import { AddQuizesComponent } from './pages/admin/add-quizes/add-quizes.componen
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 import { ViewquizQuestionComponent } from './pages/admin/viewquiz-question/viewquiz-question.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
+import { UserSidebarComponent } from './pages/normaluser/user-sidebar/user-sidebar.component';
+import { UserDashboardComponent } from './pages/normaluser/user-dashboard/user-dashboard.component';
+import { LoadquizComponent } from './pages/normaluser/loadquiz/loadquiz.component';
+
 
 
 
@@ -58,7 +61,6 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
     HomeComponent,
     ProfileComponent,
     SidebarComponent,
-    DashboardComponent,
     WelcomeComponent,
     SidemenubarComponent,
     LoginComponent,
@@ -72,7 +74,10 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
     UpdateQuizComponent,
     ViewquizQuestionComponent,
     SlugifyPipe,
-    AddQuestionComponent
+    AddQuestionComponent,
+    UserSidebarComponent,
+    UserDashboardComponent,
+    LoadquizComponent
   
  
    
@@ -97,7 +102,8 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+
     
     
   ],

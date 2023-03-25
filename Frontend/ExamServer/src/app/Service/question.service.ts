@@ -8,6 +8,9 @@ export class QuestionService {
 
   getquestionofquizurl:string="http://localhost:9092/question/quiz/all"
   createquestionurl:string="http://localhost:9092/question/create"
+  deleteurl="http://localhost:9092/question/delete"
+
+
   constructor(private http:HttpClient) { }
 
 
@@ -29,6 +32,12 @@ export class QuestionService {
   }
 
 
+  public deletequestion(quesid:any)
+  {
 
+    const params = new HttpParams().set('quesid', quesid)
+
+    return this.http.delete(`${this.deleteurl}`,{params})
+  }
 
 }

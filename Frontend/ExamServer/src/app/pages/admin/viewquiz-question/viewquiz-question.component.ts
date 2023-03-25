@@ -1,3 +1,4 @@
+import { LoginService } from './../../../Service/login.service';
 
 import { QuestionService } from './../../../Service/question.service';
 import { ActivatedRoute } from '@angular/router';
@@ -11,16 +12,27 @@ import Swal from 'sweetalert2';
 })
 export class ViewquizQuestionComponent implements OnInit{
 
-  
+  authorities = ["Vinay", "Nikhil", "Vijeth"]
+  checkuser:any=''
 //pdefining variables to set params receiving from the view quiz component component link
- qId;
+ qId;  
  qtitle; 
  questions:any=[]; 
 
 
-constructor(private route:ActivatedRoute,private question:QuestionService){}
+constructor(private route:ActivatedRoute,private question:QuestionService,private login:LoginService){}
 
   ngOnInit(): void {
+
+
+
+    //Fetching the user for checking their authority
+     this.login.getCurrentLoggedinUser().subscribe((data)=>{
+
+      this.checkuser=data;
+      
+     })
+
    
   this.qId=this.route.snapshot.params['qid'];
   this.qtitle=this.route.snapshot.params['title']
@@ -41,5 +53,48 @@ constructor(private route:ActivatedRoute,private question:QuestionService){}
   })
 
   }
+
+
+  deletequestion(quesId) {
+    if (this.authorities.includes(this.checkuser.firstname)) {
+
+    Swal.fire(
+      {
+        title:"Are you Sure",
+        confirmButtonText:'Delete',
+        showCancelButton:true,
+
+      }
+    ).then((result)=>{
+      if(result.isConfirmed)
+      {
+        this.deletequestionwithauthority(quesId)
+       
+      }
+    })
+
+    //  this.deletequizwithquthority(qid)
+    }
+    else {
+      Swal.fire('Access Denied', 'Hi ' + this.checkuser.firstname + ' You Dont have Access to Delete Question Thank You..', 'error');
+    }
+  }
+
+
+
+  deletequestionwithauthority(quesId:any)   //this id is a question id from the template we are setting
+{
+      this.question.deletequestion(quesId).subscribe((data)=>{
+
+        console.log("Deleted Successfully")
+        this.questions=this.questions.filter((q)=>q.quesId!=quesId)
+      },(error)=>{
+
+        alert("Error in deleting")
+      }) 
+}
+
+
+
 
 }
