@@ -2,11 +2,13 @@ package com.examportal.ServiceImpl;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.examportal.Entity.Category;
 import com.examportal.Entity.Quiz;
 import com.examportal.Repository.QuizRepository;
 import com.examportal.Service.QuizService;
@@ -52,6 +54,12 @@ public class QuizServiceImpl implements QuizService {
 		
 		this.repo.deleteById(qid);
 
+	}
+
+	@Override
+	public List<Quiz> getqizesofcategory(Category category) {
+		
+		return this.repo.findBycategory(category);
 	}
 
 }

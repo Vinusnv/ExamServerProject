@@ -79,7 +79,7 @@ if(role=="ADMIN")
 else if(role=="NORMAL")
 {
 
-  this.route.navigate(['normal'])
+  this.route.navigate(['normal/0'])
  this.loginservice.loginStatusSubject.next(true);
 }
 else

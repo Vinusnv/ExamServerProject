@@ -1,18 +1,14 @@
 <mat-card class="h-100 py-2 px-2">
    <mat-action-list>
-    <button mat-raised-button color="accent" class="mt20 mb20"  routerLink="/normal">
-      <mat-icon>home</mat-icon>
-      Home
-  </button>
   <mat-card-header><h1>Quiz categories</h1></mat-card-header>
   <mat-card-content>
-    <button mat-raised-button color="accent" class="mt20 mb20"  routerLink="/normal">
+    <button mat-raised-button color="accent" class="mt20 mb20"  routerLink="/normal/0">
         <mat-icon>quiz</mat-icon>
         All Quizes
     </button> 
   </mat-card-content>
   <mat-card-content *ngFor="let c of Categories">
-    <button mat-raised-button color="accent" class="mt20 mb20"  routerLink="/normal">
+    <button mat-raised-button color="accent"  class="mt20 mb20" [routerLink]="'/normal/' + c.cid">
         <mat-icon>quiz</mat-icon>
         {{c.title}}
     </button> 

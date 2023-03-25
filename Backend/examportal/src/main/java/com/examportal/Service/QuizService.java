@@ -1,7 +1,9 @@
 package com.examportal.Service;
 
+import java.util.List;
 import java.util.Set;
 
+import com.examportal.Entity.Category;
 import com.examportal.Entity.Quiz;
 
 public interface QuizService {
@@ -15,5 +17,7 @@ public interface QuizService {
 	public Set<Quiz> allQuiz();
 
 	public void deleteQuiz(Long qid);
+	
+	public List<Quiz>  getqizesofcategory(Category category);
 
 }

@@ -1,1 +1,40 @@
-<p>loadquiz works!</p>
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+
+        <h1 *ngIf="quizes.length!=0">All Avilable Quizes</h1>
+        <div class="row mt20">      
+            <div class="col-md-4" *ngFor=" let q of quizes">
+                 <h1></h1>
+                 <mat-card>
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>
+                            {{q.title}}
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            {{q.category.title}}
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <p class="truncate"> {{q.description}}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-raised-button color="accent" >View</button>&nbsp;
+                        <button mat-raised-button color="primary" >Start</button>&nbsp;
+                        <button mat-button color="accent" >Questions :{{q.numberofQuestions}} </button>
+                        <button mat-button color="accent" >Max.M :{{q.marks}} </button>
+                    </mat-card-actions>
+                 </mat-card>
+            </div>
+
+            <div class="container" *ngIf="quizes.length==0">
+                <mat-card>
+                <mat-card-header>
+                   <h1>{{category.title}} Has No Quizes Yet</h1>
+                </mat-card-header>
+                </mat-card>
+            </div>
+            
+        </div>
+    </div>
+</div>

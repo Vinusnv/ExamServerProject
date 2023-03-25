@@ -10,6 +10,8 @@ export class QuizService {
 
   getquizurl: string = "http://localhost:9092/quiz/single"
 
+  getquizofcategoryurl:string="http://localhost:9092/quiz/category"
+
   createquizurl: string = "http://localhost:9092/quiz/create"
 
   deletequizurl: string = "http://localhost:9092/quiz/delete"
@@ -25,6 +27,12 @@ export class QuizService {
   public fetchquiz(data: any) {
     const params = new HttpParams().set('qid', data)
     return this.http.get(`${this.getquizurl}`, { params });
+  }
+
+  public fetchquizesofcategory(cid:any)
+  {
+    const params = new HttpParams().set('cid', cid)
+    return this.http.get(`${this.getquizofcategoryurl}`, { params });
   }
 
 

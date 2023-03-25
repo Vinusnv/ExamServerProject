@@ -48,7 +48,7 @@ const routes: Routes = [
   },
   { path: "normal", component: UserDashboardComponent, canActivate: [NormalGuard],children:[
 
-    {path:":qid",component:LoadquizComponent }
+    {path:":cId",component:LoadquizComponent }
   ] },
   
  

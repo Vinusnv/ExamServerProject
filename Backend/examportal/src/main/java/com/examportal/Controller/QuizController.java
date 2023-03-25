@@ -1,5 +1,6 @@
 package com.examportal.Controller;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.annotation.RequestScope;
 
+import com.examportal.Entity.Category;
 import com.examportal.Entity.Quiz;
 import com.examportal.ServiceImpl.QuizServiceImpl;
 
@@ -51,6 +54,18 @@ public class QuizController {
 	public Set<Quiz> allQuiz() {
 
 		return this.service.allQuiz();
+	}
+	
+	
+	//Fetching Quizes Based on the category
+	
+	@GetMapping("/category")
+	public List<Quiz> allQuizoncategory(@RequestParam("cid")Long cid)
+	{   
+		
+		Category category=new Category();
+		category.setCId(cid);
+		return this.service.getqizesofcategory(category);
 	}
 
 	// Deleting Quiz
