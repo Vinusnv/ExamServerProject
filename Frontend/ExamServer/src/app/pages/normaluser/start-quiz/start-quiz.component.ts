@@ -17,6 +17,8 @@ export class StartQuizComponent implements OnInit {
   marksGot: any = 0;
   correctAnswer: any = 0;
   attempted: any = 0;
+  isSubmit:boolean=false;
+  timer:any;
 
   constructor(
     private locationst: LocationStrategy,
@@ -26,10 +28,7 @@ export class StartQuizComponent implements OnInit {
 
   ngOnInit(): void {
     this.preventbackbutton();
-
     this.qid = this.aroute.snapshot.params['qid'];
-    console.log(this.qid);
-
     this.loadQuestions()
   }
 
@@ -42,13 +41,11 @@ export class StartQuizComponent implements OnInit {
   }
 
   loadQuestions() {
-    this.questionservice.getquestionofquiz(this.qid).subscribe((data) => {
+    this.questionservice.getquestionofquizfornormaluser(this.qid).subscribe((data) => {
       this.questions = data;
-
-      this.questions.forEach(data => {
-        data['givenAnswer'] = ''
-      })
-      console.log(this.questions)
+        console.log(this.questions)
+      this.timer=this.questions.length*2*60;
+      this.starttimer();
     }, (error) => {
       Swal.fire('Server Error', 'Sorry for the inconvenience caused', 'error');
     });
@@ -67,23 +64,74 @@ export class StartQuizComponent implements OnInit {
       confirmButtonText: 'Submit'
     }).then((result) => {
       if (result.isConfirmed) {
-        
-         this.questions.forEach(q=>{
-
-           if(q.givenAnswer==q.answer)
-           {
-               this.correctAnswer++
-               let marksofeachquestion=this.questions[0].quiz.marks/this.questions.length
-               this.marksGot +=marksofeachquestion
-           }
-
-
-         })
+         this.evaluatequiz()
+        console.log(this.questions)
       }
-
-      console.log("correct Answers",this.correctAnswer)
     })
    
+  }
+
+  starttimer()
+  {
+   let t= window.setInterval(()=>{
+      if(this.timer<=0)
+      { 
+        this.evaluatequiz();
+        clearInterval(t)
+      }else{
+        this.timer--;
+      }
+    },1000)
+  }
+
+
+  getFormatedtime()
+  {
+    let mm=Math.floor(this.timer/60)
+    let ss=this.timer-mm*60;
+    return `${mm} min : ${ss} sec`
+  }
+
+  evaluatequiz()
+  {
+  this.questionservice.evalquiz(this.questions).subscribe((data)=>{
+     this.marksGot=parseFloat(Number(data['marksGot']).toFixed(2));
+     this.correctAnswer=data['correctAnswer']
+     this.attempted=data['attempted']
+
+  })
+
+  this.isSubmit=true;
+//Call server to Evaluate Quiz
+
+//Front End Side Evaluation
+
+
+    // 
+    // this.questions.forEach(q=>{
+
+    //   if(q.givenAnswer==q.answer)
+    //   {
+    //       this.correctAnswer++
+    //       let marksofeachquestion=this.questions[0].quiz.marks/this.questions.length
+    //       this.marksGot +=marksofeachquestion
+
+    //       console.log("marks of each question",marksofeachquestion)
+    //   }
+
+    //   if(q.givenAnswer.trim()!='')
+    //   {
+    //    this.attempted++;
+    //   }
+
+
+    // })     
+  }
+
+
+  printResult()
+  {
+    window.print();
   }
 
 

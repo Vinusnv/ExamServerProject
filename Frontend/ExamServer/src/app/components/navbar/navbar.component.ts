@@ -32,6 +32,7 @@ user=null;
   {
     this.login.logout();
    window.location.reload();
+  //  this.login.loginStatusSubject.next(false);
   }
 
 }

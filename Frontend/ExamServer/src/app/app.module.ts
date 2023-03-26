@@ -46,7 +46,9 @@ import { LoadquizComponent } from './pages/normaluser/loadquiz/loadquiz.componen
 import { UserInstructionsComponent } from './pages/normaluser/user-instructions/user-instructions.component';
 import { StartQuizComponent } from './pages/normaluser/start-quiz/start-quiz.component';
 
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from "ngx-ui-loader";
+import { mixinColor } from '@angular/material/core';
 
 
 
@@ -81,7 +83,8 @@ import { StartQuizComponent } from './pages/normaluser/start-quiz/start-quiz.com
     UserDashboardComponent,
     LoadquizComponent,
     UserInstructionsComponent,
-    StartQuizComponent
+    StartQuizComponent,
+    
   
  
    
@@ -107,6 +110,13 @@ import { StartQuizComponent } from './pages/normaluser/start-quiz/start-quiz.com
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true,
+      
+      
+    })
 
     
     

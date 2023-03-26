@@ -6,9 +6,11 @@ import { Injectable } from '@angular/core';
 })
 export class QuestionService {
 
-  getquestionofquizurl:string="http://localhost:9092/question/quiz/all"
+  getquestionofquizurl:string="http://localhost:9092/question/all"
+  getquestionofquizurlfornormaluser:string="http://localhost:9092/question/quiz"
   createquestionurl:string="http://localhost:9092/question/create"
   deleteurl="http://localhost:9092/question/delete"
+evalquizurl:string="http://localhost:9092/question/eval-quiz"
 
 
   constructor(private http:HttpClient) { }
@@ -25,6 +27,16 @@ export class QuestionService {
   }
 
 
+
+  public getquestionofquizfornormaluser(qid:any)
+  {
+
+    const params = new HttpParams().set('qid', qid)
+
+    return this.http.get(`${this.getquestionofquizurlfornormaluser}`,{params})
+  }
+
+
   
   public createQuestion(question:any)
   {
@@ -38,6 +50,11 @@ export class QuestionService {
     const params = new HttpParams().set('quesid', quesid)
 
     return this.http.delete(`${this.deleteurl}`,{params})
+  }
+
+  evalquiz(questions:any)
+  {
+    return this.http.post(`${this.evalquizurl}`,questions);
   }
 
 }

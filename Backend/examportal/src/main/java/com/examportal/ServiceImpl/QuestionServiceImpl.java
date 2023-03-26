@@ -63,5 +63,11 @@ public class QuestionServiceImpl implements QuestionService {
 
 		return this.repo.findByQuiz(quiz);
 	}
+//fetching question from the frontend to evaluate question
+	@Override
+	public Question get(Long quesid) {
+		
+		return this.repo.getOne(quesid);
+	}
 
 }

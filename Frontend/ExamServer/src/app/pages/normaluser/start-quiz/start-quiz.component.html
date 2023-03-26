@@ -1,8 +1,19 @@
-<div class="bootstrap-wrapper">
+<div class="bootstrap-wrapper" *ngIf="!isSubmit">
     <div class="container-fluid">
        <div class="row">
         <div class="col-md-2">
             <!-- Instructions -->
+           
+            <mat-card style="margin-top: 70px;">
+                <mat-card-header> <h3><b>Instructions</b></h3></mat-card-header>
+                <mat-card-content>
+                    <ul>
+                        <li>Do ot refresh the Page </li>
+                        <li>Do not Switch the tabs</li>
+                        <li>Do not minimize the window</li>
+                    </ul>
+                </mat-card-content>
+            </mat-card>
                     </div>
                     <div class="col-md-8" >
                        <ng-container *ngIf="questions">
@@ -37,8 +48,48 @@
                     </div>
                     </div>
                     <div class="col-md-2">
-            <!-- progress -->
+                      <mat-card style="margin-top: 70px;">
+
+                        <mat-card-header>
+                            <mat-card-title>
+                                Progress
+                            </mat-card-title>
+                            <mat-card-subtitle>
+                              <b>  Quiz will Be Automatically Submitted in </b>
+                            </mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content >
+                            <h1 class="text-center">{{getFormatedtime()}}</h1>
+                            <mat-spinner [value]="(timer/(this.questions.length*2*60))*100" mode="determinate" color="accent" style="margin:auto ;"></mat-spinner>
+                        </mat-card-content>
+                      </mat-card>
                     </div>
        </div>
+    </div>
+</div>
+
+<!-- show Answer -->
+
+<div class="bootstrap-wrapper mt20" *ngIf="isSubmit" >
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        <h1>Quiz Result</h1>
+                    </mat-card-title>
+                </mat-card-header>
+               <mat-card-content class="text-left">
+                <h1>Marks Got : {{marksGot}}</h1>
+                <h1>Correct Answers : {{correctAnswer}}</h1>
+                <h1>No of Question Attempted : {{attempted}}</h1>
+               </mat-card-content>
+               <div class="container mb10 text-center" >
+                <button class="mr20" mat-raised-button color="accent" (click)="printResult()">Print</button>
+                <button mat-raised-button color="accent"  routerLink="/normal/0">Home</button>
+               </div>
+            </mat-card>
+        </div>
     </div>
 </div>

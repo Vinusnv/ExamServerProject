@@ -2,7 +2,7 @@
 import { QuestionService } from './../../../Service/question.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-question.component.css']
 })
 export class AddQuestionComponent implements OnInit {
-  public Editor = ClassicEditor;
+
  
 qId
 qtitle
